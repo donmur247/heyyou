@@ -3,7 +3,7 @@
 // Main entry point for heyYou CLI app.
 
 // Third-party modules
-import { Command } from "commander";
+import { Command, Option } from "commander";
 
 // Local modules
 import { getDefaultQuote, getFunnyQuote, getInspiringQuote } from "./utils";
@@ -13,8 +13,8 @@ const app = new Command();
 app
     .name("heyYou")
     .description("A CLI app to give user a random quote of the day.")
-    .option("-f, --funny", "Start your day with a funny quote.")
-    .option("-i, --inspire", "Get a random inspiring quote of the day.")
+    .addOption(new Option("-f, --funny", "Start your day with a funny quote.").conflicts("inspire"))
+    .addOption(new Option("-i, --inspire", "Get a random inspiring quote of the day.").conflicts("funny"))
     .parse(process.argv);
 
 const options = app.opts();
