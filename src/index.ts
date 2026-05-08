@@ -5,6 +5,9 @@
 // Third-party modules
 import { Command } from "commander";
 
+// Local modules
+import { getDefaultQuote } from "./utils";
+
 // Initialize CLI app
 const app = new Command();
 app
@@ -18,5 +21,5 @@ const options = app.opts();
 
 // Main logic to handle user input and provide quotes
 if (!process.argv.slice(2).length) {
-    app.outputHelp();
+    console.log(getDefaultQuote());
 }
