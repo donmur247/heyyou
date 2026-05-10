@@ -40,10 +40,12 @@ function getDefaultQuote(): string {
 
 // Function to return funny quote
 function getFunnyQuote(): string {
-    return "Why don't scientists trust atoms? Because they make up everything!";
+    const quoteData = getQuoteFromFile("src/quotes/funny.json");
+    return formatQuote(quoteData.quote, quoteData.author);
 }
 
 // Function to return inspiring quote
 function getInspiringQuote(): string {
-    return "The only way to do great work is to love what you do. - Steve Jobs";
+    const quoteData = getQuoteFromFile("src/quotes/inspire.json");
+    return formatQuote(quoteData.quote, quoteData.author);
 }

@@ -33,9 +33,11 @@ if (!process.argv.slice(2).length) {
 }
 
 if (options.funny) {
+    console.log(`Hey hey, ${getUsername()}!\n`);
     console.log(getFunnyQuote());
 }
 
 if (options.inspire) {
+    console.log(`Believe in yourself, ${getUsername()}!\n`);
     console.log(getInspiringQuote());
 }
