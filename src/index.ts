@@ -6,7 +6,7 @@
 import { Command, Option } from "commander";
 
 // Local modules
-import { getDefaultQuote, getFunnyQuote, getInspiringQuote } from "./utils";
+import { getUsername, getDefaultQuote, getFunnyQuote, getInspiringQuote } from "./utils";
 
 // Initialize CLI app
 const app = new Command();
@@ -28,6 +28,7 @@ const options = app.opts();
 
 // Main logic to handle user input and provide quotes
 if (!process.argv.slice(2).length) {
+    console.log(`Hello, ${getUsername()}!\n`);
     console.log(getDefaultQuote());
 }
 
