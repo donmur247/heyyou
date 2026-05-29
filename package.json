@@ -1,18 +1,19 @@
 {
-  "name": "heyyou",
+  "name": "@donmur247/heyyou",
   "version": "1.0.0",
-  "description": "",
+  "description": "Start your day with this CLI app that delivers a daily dose of quotes!",
   "main": "dist/index.js",
   "bin": {
     "heyyou": "./dist/index.js"
   },
   "scripts": {
-    "build": "npx tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx tsc"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["cli", "quotes", "daily", "inspiration", "funny", "npmtool"],
+  "author": "Donny Murdiyono",
   "license": "ISC",
+  "repository": "https://github.com/donmur247/heyyou",
+  "homepage": "https://github.com/donmur247/heyyou#readme",
   "type": "commonjs",
   "dependencies": {
     "boxen": "^8.0.1",
