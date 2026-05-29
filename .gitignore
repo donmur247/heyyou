@@ -1,5 +1,6 @@
 # Dependencies
 node_modules/
+jspm_packages/
 .pnp
 .pnp.js
 
@@ -8,6 +9,9 @@ dist/
 build/
 out/
 *.tsbuildinfo
+
+# Snowpack
+web_modules/
 
 # Environment variables (Never commit these!)
 .env
