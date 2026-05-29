@@ -6,7 +6,7 @@
 import { Command, Option } from "commander";
 
 // Local modules
-import { getUsername, getDefaultQuote, getFunnyQuote, getInspiringQuote } from "./utils";
+import { getUsername, getDefaultQuote, getFunnyQuote, getInspiringQuote, getRandomQuoteFromAPI } from "./utils";
 
 // Initialize CLI app
 const app = new Command();
@@ -15,9 +15,10 @@ app
     .description("A CLI app to give user a random quote of the day.")
     .addOption(new Option("-f, --funny", "Start your day with a funny quote."))
     .addOption(new Option("-i, --inspire", "Get a random inspiring quote of the day."))
+    .addOption(new Option("-a, --api", "Get a random quote from thequoteshub API."))
     .action((options, app) => {
-        if (options.funny && options.inspire) {
-            console.log("Please choose either --funny or --inspire, not both.");
+        if (options.funny && options.inspire && options.api) {
+            console.log("Please choose either --funny, --inspire, or --api, but not all three.");
             console.log("Have a nice one! :)");
             process.exit(0);
         }
@@ -40,4 +41,9 @@ if (options.funny) {
 if (options.inspire) {
     console.log(`Believe in yourself, ${getUsername()}!\n`);
     console.log(getInspiringQuote());
+}
+
+if (options.api) {
+    console.log(`Here's a random quote for you, ${getUsername()}!\n`);
+    getRandomQuoteFromAPI().then((quote) => console.log(quote));
 }

@@ -3,8 +3,9 @@
 import fs from "fs";
 import boxen from "boxen";
 import chalk from "chalk";
+import { format } from "path";
 
-export { getUsername,getDefaultQuote, getFunnyQuote, getInspiringQuote };
+export { getUsername, getDefaultQuote, getFunnyQuote, getInspiringQuote, getRandomQuoteFromAPI };
 
 // Function to return current username
 function getUsername(): string {
@@ -48,4 +49,29 @@ function getFunnyQuote(): string {
 function getInspiringQuote(): string {
     const quoteData = getQuoteFromFile("src/quotes/inspire.json");
     return formatQuote(quoteData.quote, quoteData.author);
+}
+
+// Interface for quote data
+interface Quote {
+    text: string;
+    author: string;
+    tags: string[];
+    id: Number;
+    author_id: string;
+}
+
+// Function get random quote from thequoteshub API
+async function getRandomQuoteFromAPI(): Promise<string> {
+    const url: string = "https://thequoteshub.com/api/random-quote";
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Error! Responsestatus: ${response.status}`);
+        }
+        const data: Quote = await response.json();
+        return formatQuote(data.text, data.author);
+    } catch (error) {
+        console.error("Error fetching quote from API:", error);
+        return formatQuote("Failed to fetch quote.", "Unknown");
+    }
 }
